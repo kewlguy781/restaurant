@@ -5,6 +5,12 @@ def index
 end
 
 def create
+    menu = Menu.new(menu_params)
+    if (menu.save)
+        render json: menu
+    else
+        render json: { errors: menu.errors }, status: :unprocessable_entity
+    end
 end
 
 def update
@@ -16,7 +22,7 @@ end
 private
 
 def menu_params
-    params.require(:menu).permit(:name)
+    params.require(:menu).permit(:menu_name)
 end
 
 end

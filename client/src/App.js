@@ -4,6 +4,8 @@ import './App.css';
 import axios from "axios";
 import { Container } from "semantic-ui-react";
 import MenuList from "./components/MenuList.js"
+import MenuForm from "./components/MenuForm.js"
+
 
 function App() {
 const [menus, setMenus] = useState([])
@@ -18,13 +20,14 @@ useEffect(() => {
     // .then(res => res.json()) skip this with axios, not with fetch
     .then((res) => {
       setMenus(res.data);
+console.log('res :>> ', res);
       //if error occurs inside of here code flow will go to catch clause
     })
     .catch((err) => {
       // good way for development to catch error but bad for production
       alert("error occurred fetching todos");
     });
-
+console.log('menus :>> ', menus);
     // axios
     // .get("/api/items")
     // // .then(res => res.json()) skip this with axios, not with fetch
@@ -45,7 +48,12 @@ useEffect(() => {
 
 
 const addMenu = (menu_name) => {
-  //  API CALL TO ADD ITEM
+  console.log('menu_name :>> ', menu_name);
+  axios.post('/api/menus', {menu_name: menu_name})
+  .then((res) => {
+    debugger
+    setMenus([res.data])
+  })
 };
 
 const updateMenu = (id) => {
@@ -61,8 +69,8 @@ const deleteMenu = (id) => {
 return (
   <Container>
     <h1>Menu List</h1>
-    {/* <MenuForm addItem={addMenu} />
-    <MenuList updateMenu={updateMenu} deleteMenu={deleteMenu} menus={menus} /> */}
+    <MenuForm addMenu={addMenu} />
+    {/* <MenuList updateMenu={updateMenu} deleteMenu={deleteMenu} menus={menus} />  */}
     <MenuList menus={menus} />
   </Container>
 );
