@@ -85,7 +85,7 @@ axios.delete(`api/menus/${id}`)
 return (
   <Container>
     <h1>Menu List</h1>
-    <MenuForm addMenu={addMenu} />
+    <MenuForm addMenu={addMenu} updateMenu={updateMenu} />
     <MenuList updateMenu={updateMenu} deleteMenu={deleteMenu} menus={menus} />
   </Container>
 );

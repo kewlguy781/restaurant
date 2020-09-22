@@ -14,6 +14,8 @@ def create
 end
 
 def update
+    menu = Menu.find(params[:id])
+    menu.update(menu_name: menu_name)
 end
 
 def destroy

@@ -1,14 +1,16 @@
 import React from 'react';
 import {Button, Icon} from "semantic-ui-react";
 
+
 debugger 
 const Menu = ({id, menu_name, updateMenu, deleteMenu}) => (
     <div>
-<h2>{menu_name} {id} 
+<h2><a href={'/menus/' + id}> {menu_name} </a>{id} 
     <Button 
     icon color="yellow"
     size="medium"
     onClick={ () => updateMenu(id)}>
+        {/* Need to make this a toggle one */}
     <Icon name="pencil" /></Button>
     <Button 
     icon color="red"
