@@ -5,7 +5,7 @@ import {Button, Icon} from "semantic-ui-react";
 debugger 
 const Menu = ({id, menu_name, updateMenu, deleteMenu}) => (
     <div>
-<h2><a href={'/menus/' + id}> {menu_name} </a>{id} 
+<h2><a href={'/menuview/' + id}> {menu_name} </a>{id} 
     <Button 
     icon color="yellow"
     size="medium"
