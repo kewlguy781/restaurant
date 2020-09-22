@@ -16,7 +16,9 @@ end
 def update
 end
 
-def destory
+def destroy
+    menu = Menu.find(params[:id]).destroy
+    render json: {message: "Item deleted", menu: menu}
 end
 
 private
